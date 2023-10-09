@@ -7,6 +7,23 @@ const Appliedjobs = () => {
     const jobs = useLoaderData();
 
     const [appliedJobs, setAppliedJobs] = useState([]);
+    const [displayJobs, setDisplayJobs] = useState([]);
+
+    const handleJobsFilter = filter => {
+        if (filter === 'all') {
+            setDisplayJobs(appliedJobs);
+
+        }
+        else if (filter === 'remote') {
+            const remoteJobs = appliedJobs.filter(job => job.remote_or_onsite === 'Remote');
+            setDisplayJobs(remoteJobs);
+        }
+        else if (filter === 'onsite') {
+            const onsiteJobs = appliedJobs.filter(job => job.remote_or_onsite === 'Onsite');
+            setDisplayJobs(onsiteJobs);
+        }
+
+    }
 
 
     useEffect(() => {
@@ -21,27 +38,30 @@ const Appliedjobs = () => {
             }
 
             setAppliedJobs(jobsApplied);
+            setDisplayJobs(jobsApplied);
             //console.log(jobs, storedJobIds, jobsApplied)
         }
-    }, [])
+    }, [jobs])
     return (
         <div>
             <h2 className="text-2xl">jobs I applied. {appliedJobs.length} </h2>
             <div className="dropdown">
                 <label tabIndex={0} className="btn m-1">Click</label>
                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                    <li><a>All</a></li>
-                    <li><a>Remote</a></li>
-                    <li><a>Onsite</a></li>
+
+                    <li onClick={() => handleJobsFilter('all')}><a>All</a></li>
+                    <li onClick={() => handleJobsFilter('remote')}> <a>Remote</a></li>
+                    <li onClick={() => handleJobsFilter('onsite')}> <a>Onsite</a></li>
+
                 </ul>
-            </div>
+            </div >
             <ul>
                 {
-                    appliedJobs.map(job => <li key={job.id}>{job.job_title} {job.company_name} {job.remote_or_onsite}</li>)
+                    displayJobs.map(job => <li key={job.id}>{job.job_title} {job.company_name} {job.remote_or_onsite}</li>)
                 }
             </ul>
 
-        </div>
+        </div >
     );
 };
 
