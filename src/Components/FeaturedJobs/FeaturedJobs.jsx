@@ -12,7 +12,7 @@ const FeaturedJobs = () => {
     }, []);
 
     return (
-        <div>
+        <div >
             <div>
                 <div>
                     <h2 className="text-3xl text-center font-bold">Highlighted Career Opportunities: {jobs.length}</h2>
@@ -25,9 +25,9 @@ const FeaturedJobs = () => {
 
                 </div>
             </div>
-            <div className="dataLenght === jobs.length && 'hidden'">
+            <div className=" dataLenght === jobs.length ? 'hidden' : '' ">
                 <button
-                    onClick={() => setDataLength(jobs.length)} className="btn btn-primary ">See All Jobs</button>
+                    onClick={() => setDataLength(jobs.length)} className="btn btn-primary  ">See All Jobs</button>
             </div>
         </div>
     );

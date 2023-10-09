@@ -10,6 +10,7 @@ import Root from './Components/Root/Root';
 import Home from './Components/Home/Home';
 import Appliedjobs from './Components/Appliedjobs/Appliedjobs';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
+import JobDetails from './Components/JobDetails/JobDetails';
 
 
 
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/applied",
         element: <Appliedjobs></Appliedjobs>,
+      },
+      {
+        path: "/job/:id",
+        element: <JobDetails></JobDetails>,
       },
 
     ],
