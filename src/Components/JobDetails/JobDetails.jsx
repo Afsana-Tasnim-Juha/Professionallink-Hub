@@ -1,4 +1,6 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const JobDetails = () => {
@@ -6,6 +8,9 @@ const JobDetails = () => {
     const { id } = useParams();
     const job = jobs.find(job => job.id === id);
     console.log(job);
+
+    const handleAppliedJob = () => { toast("Applied Successfully"); }
+
     return (
         <div>
             <h2>Job Details : {id}</h2>
@@ -17,11 +22,12 @@ const JobDetails = () => {
                 </div>
                 <div className="border">
                     <h2>side things</h2>
-                    <button className="text-[#FFF] bg-[#9873FF] btn-btn-primary w-full py-4">Apply Now</button>
+                    <button onClick={handleAppliedJob} className="text-[#FFF] bg-[#9873FF] btn-btn-primary w-full py-4">Apply Now</button>
 
                 </div>
 
             </div>
+            <ToastContainer />
 
         </div>
     );
