@@ -15,17 +15,17 @@ const FeaturedJobs = () => {
         <div >
             <div>
                 <div>
-                    <h2 className="text-3xl text-center font-bold">Highlighted Career Opportunities: {jobs.length}</h2>
-                    <p className="text-center text-l mt-4">Explore thousands of job opportunities with all the information you need. It's your future.</p>
+                    <h2 className="text-3xl text-center font-bold mt-20">Highlighted Career Opportunities: {jobs.length}</h2>
+                    <p className="text-center text-l mt-8">Explore thousands of job opportunities with all the information you need. It's your future.</p>
                 </div>
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid grid-cols-2 gap-6 mt-6">
                     {
                         jobs.slice(0, dataLenght).map(job => <Job key={job.id} job={job}></Job>)
                     }
 
                 </div>
             </div>
-            <div className=" dataLenght === jobs.length ? 'hidden' : '' ">
+            <div className=" text-center my-4 dataLenght === jobs.length ? 'hidden' : '' ">
                 <button
                     onClick={() => setDataLength(jobs.length)} className="btn btn-primary  ">See All Jobs</button>
             </div>
